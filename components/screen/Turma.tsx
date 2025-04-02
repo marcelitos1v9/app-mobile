@@ -32,6 +32,8 @@ export default function TurmaScreen() {
   );
   const [selectedTurmaColor, setSelectedTurmaColor] = useState(courseColors[2])
 
+  const [selectedTurmaName, setSelectedTurmaName] = useState('')
+
 
   return (
     <View style={styles.container}>
@@ -39,7 +41,7 @@ export default function TurmaScreen() {
         <Counter />
         <Header
           title='Turma'
-          subtitle='DSM4'
+          subtitle={selectedTurmaName}
           titleStyle={{ color: selectedTurmaColor }}
           subtitleStyle={{ color: selectedTurmaColor }}
         />
@@ -57,7 +59,8 @@ export default function TurmaScreen() {
       <TurmaList
         turmas={filteredTurmas}
         style={styles.listContainer}
-        onTurmaPress={(turmaData)=> setSelectedTurmaColor(turmaData.color)}
+        onTurmaPress={(turmaData)=> {setSelectedTurmaColor(turmaData.color)
+          setSelectedTurmaName(turmaData.name)}}
       />
 
       <View style={styles.separator} />
